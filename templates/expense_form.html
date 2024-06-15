@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section id="expense-form">
+        <h2>Add New Expense</h2>
+        <form action="{{ url_for('add_expense') }}" method="post">
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select><br><br>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" step="0.01" min="0.01" required><br><br>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+            <button type="submit">Add Expense</button>
+        </form>
+    </section>
+{% endblock %}

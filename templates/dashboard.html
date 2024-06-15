@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section id="dashboard">
+        <h2>Expense Dashboard</h2>
+        <div id="expenses">
+            <h3>Expenses by Category</h3>
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <h4>{{ category.name }}</h4>
+                        <ul>
+                            {% for expense in expenses if expense.category_id == category.id %}
+                                <li>{{ expense.amount }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
